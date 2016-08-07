@@ -44,4 +44,19 @@ public class Filter<E extends RealmObject> {
         }
         return query.findAll();
     }
+
+    /**
+     * method filterBetween digunakan untuk filter data dengan hasil terdapat di antara masukkan parameter
+     * @param realm inisialisasi realm
+     * @param model kelas model realm object
+     * @param parameter parameter yg akan di filter
+     * @param from value awal
+     * @param to value akhir
+     * @return method ini akan mereturnkan data hasil filtering berbentuk RealmResults
+     */
+    public RealmResults<E> filterBetween(Realm realm, Class<E> model, String parameter, int from, int to){
+        RealmQuery<E> query = realm.where(model);
+        query.between(parameter,from,to);
+        return query.findAll();
+    }
 }
