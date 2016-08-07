@@ -45,7 +45,7 @@ public class Controller<E> {
         parser = new Parser();
         return parser.parse(result, model);
     }
-    public void displayData(Context context, List<E> data, Class<E> model, Class<? extends BindableFrameLayout> view, RecyclerView recyclerView, ViewEventListener viewEventListener){
+    public void displayData(List<E> data, Class<E> model, Class<? extends BindableFrameLayout> view, RecyclerView recyclerView, ViewEventListener viewEventListener){
         recyclerView.setLayoutManager(layoutManager);
         SmartAdapter.items(data).map(model,view).listener(viewEventListener).into(recyclerView);
     }
