@@ -7,11 +7,19 @@ import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 /**
- * Created by adamm on 7/29/2016.
+ * kelas search untuk pencarian data dari database
+ * @param <E> parameter kelas model extends RealmObject
  */
 public class Search<E extends RealmObject> {
-    public RealmResults<E> searching(Realm realm, Class<E> eClass, String... params) {
-        RealmQuery<E> query = realm.where(eClass);
+    /**
+     * method search digunakan untuk pencarian data dari database menggunakan realm
+     * @param realm inisialisasi realm
+     * @param model kelas model extends realm object
+     * @param params parameter searching. string pertama dan seterusnya untuk parameter. string terakhir untuk value dari parameter
+     * @return method ini akan mereturnkan data hasil filtering berbentuk RealmResults
+     */
+    public RealmResults<E> searching(Realm realm, Class<E> model, String... params) {
+        RealmQuery<E> query = realm.where(model);
         query.contains(params[0], params[params.length-1], Case.INSENSITIVE);
         if (params.length > 2) {
             for (int i = 1; i < params.length-2; i++)

@@ -6,7 +6,7 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
 /**
- * Created by adamm on 7/28/2016.
+ * kelas application digunakan pada manifest application name untuk konfigurasi database realm
  */
 public class BaseApplication extends Application {
     @Override

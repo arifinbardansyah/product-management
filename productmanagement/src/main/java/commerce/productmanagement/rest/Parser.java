@@ -5,16 +5,6 @@ import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import java.util.List;
 
-//import commerce.productmanagement.utility.RealmString;
-//import commerce.productmanagement.utility.RealmStringDeserializer;
-//import io.realm.RealmList;
-//import io.realm.RealmObject;
-
-//import commerce.productmanagement.display.model.CategoryModel;
-
-/**
- * Created by adamm on 7/14/2016.
- */
 public class Parser<E> {
 
     Gson gson = new Gson();

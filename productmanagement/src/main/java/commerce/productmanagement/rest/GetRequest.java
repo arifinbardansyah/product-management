@@ -6,9 +6,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * Created by adamm on 7/19/2016.
- */
 public class GetRequest extends AsyncRequest {
 
     OkHttpClient client = new OkHttpClient();
