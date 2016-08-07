@@ -1,6 +1,7 @@
 package commerce.productmanagement.display.controller;
 
 import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -17,22 +18,35 @@ import io.nlopez.smartadapters.views.BindableFrameLayout;
 /**
  * Created by adamm on 7/29/2016.
  */
-public class Controller {
+public class Controller<E> {
+    private GetRequest getRequest;
+    private Parser parser;
+    private PostRequest postRequest;
+    private RecyclerView.LayoutManager layoutManager;
 
-    public <E> List<E> getData(String url, Class<E> model) throws ExecutionException, InterruptedException {
-        GetRequest getRequest = new GetRequest();
+    public void setLayout(Context context, int layout){
+        if (layout == 0){
+            this.layoutManager = new LinearLayoutManager(context);
+        }
+        if (layout == 1){
+            this.layoutManager = new GridLayoutManager(context, 2);
+        }
+    }
+
+    public List<E> getData(String url, Class<E> model) throws ExecutionException, InterruptedException {
+        getRequest = new GetRequest();
         String result = getRequest.execute(url).get();
-        Parser parser = new Parser();
+        parser = new Parser();
         return parser.parse(result, model);
     }
-    public <E> List<E> postData(String url, String parameter, String value, Class<E> model) throws ExecutionException, InterruptedException {
-        PostRequest postRequest = new PostRequest(parameter,value);
+    public List<E> postData(String url, String parameter, String value, Class<E> model) throws ExecutionException, InterruptedException {
+        postRequest = new PostRequest(parameter,value);
         String result = postRequest.execute(url).get();
-        Parser parser = new Parser();
+        parser = new Parser();
         return parser.parse(result, model);
     }
-    public <E> void displayData(Context context, List<E> data, Class<E> model, Class<? extends BindableFrameLayout> view, RecyclerView recyclerView, ViewEventListener viewEventListener){
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+    public void displayData(Context context, List<E> data, Class<E> model, Class<? extends BindableFrameLayout> view, RecyclerView recyclerView, ViewEventListener viewEventListener){
+        recyclerView.setLayoutManager(layoutManager);
         SmartAdapter.items(data).map(model,view).listener(viewEventListener).into(recyclerView);
     }
 

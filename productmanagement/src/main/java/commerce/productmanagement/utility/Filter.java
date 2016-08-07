@@ -9,8 +9,8 @@ import io.realm.RealmResults;
 /**
  * Created by adamm on 7/29/2016.
  */
-public class Filter {
-    public <E extends RealmObject> RealmResults<E> filterOR(Realm realm, Class<E> eClass, String... params) {
+public class Filter<E extends RealmObject> {
+    public RealmResults<E> filterOR(Realm realm, Class<E> eClass, String... params) {
         RealmQuery<E> query = realm.where(eClass);
         query.contains(params[0], params[1], Case.INSENSITIVE);
         if (params.length > 1) {
@@ -19,7 +19,7 @@ public class Filter {
         }
         return query.findAll();
     }
-    public <E extends RealmObject> RealmResults<E> filterAND(Realm realm, Class<E> eClass, String... params) {
+    public RealmResults<E> filterAND(Realm realm, Class<E> eClass, String... params) {
         RealmQuery<E> query = realm.where(eClass);
         query.contains(params[0], params[1], Case.INSENSITIVE);
         if (params.length > 1) {
