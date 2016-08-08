@@ -122,3 +122,10 @@ RealmResults<Produkh> realmResults = filter.filterOR(realm,Produkh.class,"catego
 Sort sort = new Sort();
 RealmResults<Produkh> realmResults2 = sort.sorting(realmResults,Produkh.class,"brand",true);
 ```
+
+This Library include
+Gson
+Okhttp3
+SmartAdapters
+Picasso
+Realm
