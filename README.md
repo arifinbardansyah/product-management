@@ -1,4 +1,5 @@
 # product-management
+library ini berfungsi untuk mengambil data dari API dan menampilkan data kedalam tampilan recyclerview. terdapat fitur searching filter dan sorting untuk data yg disimpan kedalam database oleh library ini juga image loader untuk manampilkan image yg terdapat pada url. untuk menampilkan data menjadi tampilan kedalam recyclerview programmer cukup membuat model dan view yg dibutuhkan oleh library ini.
 
 Instalasi
 ---------
