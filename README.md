@@ -116,17 +116,29 @@ ImageLoader imageLoader = new ImageLoader();
 imageLoader.load(context,model.getImage(),imageView);
 ```
 
+Creating Object, Write, and Transaction
+---------------------------------------
+Library ini mendukung penyimpanan data dalam database. Untuk penggunaan fungsi buat objek dan penulisan kedalam database selengkapnya ada pada dokumentasi realm pada creating object, write, dan transaction.
+
 Search, Filter, dan Sort
 ------------------------
-Untuk Search dibutuhkan list yang telah terisi data dan tersimpan di database, untuk penyimpanan kedalam database dapat dilihat pada dokumentasi realm. Berikut penggunaan Search, Filter, dan Sort:
+Untuk Search dibutuhkan list yang telah terisi data dan tersimpan di database. Fungsi Search membutuhkan inisialisasi realm, kelas model, parameter, dan value search. Method searching akan mereturnkan RealmResults dari kelas model. Berikut penggunaan Search:
 ```
 Search search = new Search();
 RealmResults<Produkh> realmResults1 = search.searchingOR(realm, Produkh.class, "product", value );
 ```
+Untuk Filter dibutuhkan list yang telah terisi dan tersimpan di database. Fungsi Filter membutuhkan inisialisasi realm, kelas model, parameter, dan value filter. Method filterOR, filterAND, dan filterBetween akan mereturnkan RealmResults dari kelas model. Berikut penggunaan Filter:
 ```
 Filter filter = new Filter();
 RealmResults<Produkh> realmResults = filter.filterOR(realm,Produkh.class,"category",child);
+
+Filter filter = new Filter();
+RealmResults<Produkh> realmResults = filter.filterAND(realm,Produkh.class,"category",child);
+
+Filter filter = new Filter();
+RealmResults<Produkh> realmResults = filter.filterBetween(realm,Produkh.class,"harga",from,to);
 ```
+Untuk Sort dibutuhkan list RealmResults dari kelas model. Fungsi Sort membutuhkan inisialisasi RealmResults, kelas model, parameter, dan ascending atau descending. Method Sort akan mereturnkan RealmResults dari kelas model. Berikut penggunaan Sort:
 ```
 Sort sort = new Sort();
 RealmResults<Produkh> realmResults2 = sort.sorting(realmResults,Produkh.class,"brand",true);
