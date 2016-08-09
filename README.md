@@ -20,7 +20,7 @@ apply plugin: 'realm-android'
 ```
 Juga tambahkan project management library di dependencies
 ```
-compile project(":productmanagement")
+compile 'commerce.productmanagement:productmanagement:1.1.6'
 ```
 
 Configuring
@@ -107,6 +107,14 @@ controller.displayData(context, listProduct, Product.class, ProductView.class, r
     public void onViewEvent(int i, Object o, int i1, View view) {}});
 ```
 Parameter yang dibutuhkan pada method ini adalah context, data berupa List, kelas model, kelas view yang tadi dibuat, recycler view pada layout activity, dan ViewEventListener() untuk aksi ketika item di click.
+
+Image Loader
+------------
+Library ini terdapat fungsi untuk memuat gambar dari url dan menampilkannya. untuk penggunaannya dapat dilihat dibawah ini:
+```
+ImageLoader imageLoader = new ImageLoader();
+imageLoader.load(context,model.getImage(),imageView);
+```
 
 Search, Filter, dan Sort
 ------------------------
