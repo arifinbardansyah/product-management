@@ -22,7 +22,7 @@ public class Search<E extends RealmObject> {
         RealmQuery<E> query = realm.where(model);
         query.contains(params[0], params[params.length-1], Case.INSENSITIVE);
         if (params.length > 2) {
-            for (int i = 1; i < params.length-2; i++)
+            for (int i = 1; i < params.length-1; i++)
                 query.or().contains(params[i], params[params.length],Case.INSENSITIVE);
         }
         return query.findAll();
