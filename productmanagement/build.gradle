@@ -3,7 +3,7 @@ apply plugin: 'realm-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "1.1.4"
+version = "1.1.6"
 group = "commerce.productmanagement"
 
 def siteUrl = 'https://github.com/arifinbardansyah/product-management'

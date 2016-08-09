@@ -26,17 +26,11 @@ public class Controller<E> {
     private RecyclerView.LayoutManager layoutManager;
 
     /**
-     * method untuk set layout manager recycler view. grid layout atau linear layout
-     * @param context parameter context dari activity
-     * @param layout int layout. 0 untuk linear layout, 1 untuk grid layout
+     * method untuk set layout manager recycler view. GridLayoutManager atau LinearLayoutManager
+     * @param layoutManager new GridLayoutManager atau LinearLayoutManager
      */
-    public void setLayout(Context context, int layout){
-        if (layout == 0){
-            this.layoutManager = new LinearLayoutManager(context);
-        }
-        if (layout == 1){
-            this.layoutManager = new GridLayoutManager(context, 2);
-        }
+    public void setLayout(RecyclerView.LayoutManager layoutManager){
+        this.layoutManager = layoutManager;
     }
 
     /**
